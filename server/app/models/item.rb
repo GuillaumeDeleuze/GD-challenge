@@ -4,20 +4,33 @@ class Item < ApplicationRecord
   has_many :operators, through: :operators_items
 
   validates :product, presence: true
-  validates :status, presence: true
 
-  enum status: [:pending, :picking, :checking, :packing]
 
-# implémenter fonction pour voir "qui" a effectuer l'action 
-# Solution à envisager :
+  # def dernière action
+    # Doit indiquer : opérateur -> action -> done ?  
+  # end
 
-# Ajouter une nouvelle table : operators_items
-# Permettrait de savoir qui est en charge d'un item
-# boolean done default false 
-# Quand le statut passerait de done false à true -> status += 1 -> passe à un nouvel opérateur selon son poste
+  def last_action
+    if operators_items.last == nil
+      "Rien en cours pour le moment"
+    else
+      "#{operators_items.last.operator.name} - #{operators_items.last.action} - #{operators_items.last.done? ? "Fait" : "En cours"}"
+    end
+  end
 
-# 1 - Nécessite de rajouter d'autres colonnes à items ? (picked_by, checked_by, packed_by?) 
-# 2 - ou à operators_items ? (enum action: [:picked, :checked, :packed])
-# Si lecture à partir de la DB = plus rapide d'avoir les infos avec solution 1 mais rajoute + de colonne
-# Si besoin de rajouter une étape logistique Solution 2 semble plus facile à gérer
+
+  # def suivi 
+    # Doit indiquer : liste des opérateurs - action - si dernière action = done
+  # end
+
+  def tracking
+    if operators_items.last == nil
+      "Non pris en charge pour le moment"
+    else
+      operators_items.each do |track|
+        puts "#{track.operator.name} - #{track.action}"
+      end
+      "#{operators_items.last.done? ? "Fait" : "En cours"}"
+    end
+  end
 end
