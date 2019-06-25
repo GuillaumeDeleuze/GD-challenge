@@ -2,6 +2,10 @@ class Item < ApplicationRecord
   belongs_to :product
 
   validates :product, presence: true
+  validates :status, presence: true
+
+  enum status: [:pending, :picked, :checked, :packed]
+
 
 
 # Si sélectionne robe rouge 
