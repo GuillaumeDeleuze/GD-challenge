@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_100252) do
+ActiveRecord::Schema.define(version: 2019_06_25_102539) do
 
   create_table "items", force: :cascade do |t|
     t.integer "product_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_06_25_100252) do
     t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "action", default: 0
     t.index ["items_id"], name: "index_operators_items_on_items_id"
     t.index ["operators_id"], name: "index_operators_items_on_operators_id"
   end

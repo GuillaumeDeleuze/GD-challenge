@@ -19,5 +19,5 @@ class Item < ApplicationRecord
 # 1 - Nécessite de rajouter d'autres colonnes à items ? (picked_by, checked_by, packed_by?) 
 # 2 - ou à operators_items ? (enum action: [:picked, :checked, :packed])
 # Si lecture à partir de la DB = plus rapide d'avoir les infos avec solution 1 mais rajoute + de colonne
-
+# Si besoin de rajouter une étape logistique Solution 2 semble plus facile à gérer
 end
