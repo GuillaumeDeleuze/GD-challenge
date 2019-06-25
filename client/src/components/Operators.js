@@ -85,6 +85,7 @@ class Operators extends Component {
               <Link to={`/operators/${operator.id}`} key={operator.id}>
                 <ListItemText inset primary={operator.name} />
               </Link>
+                ({operator.points} points)
             </ListItem>
           ))}
         </List>
