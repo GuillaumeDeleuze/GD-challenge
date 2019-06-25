@@ -6,17 +6,14 @@ class Item < ApplicationRecord
 
   enum status: [:pending, :picked, :checked, :packed]
 
+# implémenter fonction pour voir "qui" à effectuer l'action 
+# Solution à envisager :
 
+# Ajouter une nouvelle table : operators_items
+# Permettrait de savoir qui est en charge d'un item
+# boolean done default false 
+# Quand le statut passerait de done false à true -> status += 1 -> passe à un nouvel opérateur selon son poste
 
-# Si sélectionne robe rouge 
+# Nécessite de rajouter d'autres colonnes à items ? (picked_by, checked_by, packed_by?) 
 
-# Je veux voir => Picked ? y / n
-# Si oui => par qui ? + checked ? y / n 
-# Si oui => par qui ? + packed ? y / n 
-# Si oui => par qui ?
-
-# Dans model items => 
-# ajouter « status » picked / checked / packed default 0 
-
-# implémenter fonction pour voir "qui" à effectuer l'action
 end
