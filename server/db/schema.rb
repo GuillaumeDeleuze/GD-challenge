@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_102539) do
+ActiveRecord::Schema.define(version: 2019_06_25_123125) do
 
   create_table "items", force: :cascade do |t|
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
     t.index ["product_id"], name: "index_items_on_product_id"
   end
 
@@ -28,14 +27,14 @@ ActiveRecord::Schema.define(version: 2019_06_25_102539) do
   end
 
   create_table "operators_items", force: :cascade do |t|
-    t.integer "operators_id"
-    t.integer "items_id"
+    t.integer "operator_id"
+    t.integer "item_id"
     t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "action", default: 0
-    t.index ["items_id"], name: "index_operators_items_on_items_id"
-    t.index ["operators_id"], name: "index_operators_items_on_operators_id"
+    t.index ["item_id"], name: "index_operators_items_on_item_id"
+    t.index ["operator_id"], name: "index_operators_items_on_operator_id"
   end
 
   create_table "operators_postes", force: :cascade do |t|
