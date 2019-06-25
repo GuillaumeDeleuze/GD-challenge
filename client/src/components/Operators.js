@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import {
   CircularProgress,
@@ -81,7 +82,9 @@ class Operators extends Component {
               <ListItemAvatar>
                 <Avatar alt={`Avatar ID ${operator.id}`} />
               </ListItemAvatar>
-              <ListItemText inset primary={operator.name} />
+              <Link to={`/operators/${operator.id}`} key={operator.id}>
+                <ListItemText inset primary={operator.name} />
+              </Link>
             </ListItem>
           ))}
         </List>
