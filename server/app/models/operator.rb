@@ -9,4 +9,10 @@ class Operator < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+#prendre en compte que les statut où l'action a bien été réalisée
+
+  def points
+    operators_items.where(done: true).count
+  end
 end
